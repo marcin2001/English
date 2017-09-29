@@ -4,67 +4,8 @@
 	<meta charset="UTF-8">
 	<title>Вхід</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<link rel="stylesheet" href="index.css" type="text/css" />
 </head>
-	<style>
-	body{
-		background-image: url(foto/lond.jpg);
-		background-repeat: no-repeat;
-		background-size: cover;
-	}
-		.inp{
-			max-width: 350px;
-			height: 350px;
-			box-shadow: 0px 0px 30px gray;
-			margin-left: auto;
-			margin-right: auto;
-			margin-top: 100px;
-			background: white;
-		}
-		.h1{
-			text-align: center;
-			padding-top: 30px	
-		}
-		p{
-			text-align: center;
-			font-size: 23px;
-			margin: 5px;
-		}
-		input{
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			width: 70%;
-			height: 8%;
-			font-size: 18px;
-			text-align: center;
-			border-radius: 10px ;
-			border: 1px solid gray
-		}
-		input:focus{
-			background: lightyellow;
-		}
-		button{
-			width: 50%;
-			height: 10%;
-			font-size: 16px;
-			background:  #00CD00;
-			border: none;
-			outline: none;
-			margin-left: auto;
-			margin-right: auto;
-			display: block;
-			margin-top: 20px;
-
-		}
-		button:hover{
-			box-shadow: 0px 0px 10px gray;
-			color: white
-		}
-		h3{
-			color: red;
-			text-align: center;
-		}
-	</style>
 <body>
 	<div class="inp">
 		<h1 class="h1">Вхід</h1>
@@ -75,28 +16,6 @@
 		<button class="but" id="but">Вхід</button>
 		<h3 id="proces"></h3>
 	</div>
-
-	<script>
-		var inp1 = document.getElementById('input1');
-		var inp2 = document.getElementById('input2');
-		var rez = document.getElementById('but');
-		var proces = document.getElementById('proces')
-
-		function check(){
-
-			if (inp1.value === 'english' && inp2.value === 'kurs' ) {
-				window.location = 'Курс.html';
-			}
-			if (inp1.value === 'english' && inp2.value === 'test' ) {
-				window.location = 'Тест.html';
-			}
-			else{
-				proces.textContent = 'Неправильний логін чи пароль!'
-			}
-			
-		}
-
-		rez.addEventListener('click' , check);
-	</script>
+	<script type="text/javascript" src="index.js"></script>
 </body>
 </html>
