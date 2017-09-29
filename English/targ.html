@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+	<style>
+		body{
+			margin:0px;
+			background-image: linear-gradient(to right , #f0ffff  , white 50%, #f0ffff)
+		}
+		.askk{
+			width: 20%;
+			height: 1%;
+			text-align: center;
+			margin: 10px;
+			display: inline-block;
+		}
+		hr{
+			transform: rotate(90deg);
+		}
+		.ask{
+			border-right: 2px solid black;
+			border-left: 2px solid black;
+			max-width: 200px;
+			margin-right: auto;
+			margin-left: auto;			
+		}
+		.cont{
+			width: auto;
+			height: auto;
+			padding-top: 64px;
+			padding-bottom: 10px;
+
+		}
+		input::-webkit-inner-spin-button {
+    		-webkit-appearance: none;
+    	}
+    	.rezult{
+    		text-align: center;
+    	}
+    	.example{
+    		text-align: center;
+    		display: block;
+    		font-size: 17px;
+    	}
+    	.tit{
+    		margin: 1px;
+    		text-align: center;
+    	}
+    	p{
+    		float: left;
+    	}
+    	button{
+    		font-size: 20px;
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+			float: left;
+    	}
+    	#but{
+    		margin-right: 7px
+    	}
+    	.butt{
+    		width: 155px;
+    		height: 30px;
+    		margin-left: auto;
+    		margin-right: auto;
+    	}
+
+	</style>
+<body>
+	
+	<div class="cont">
+		<h2 class="tit">Метод Саріуса</h2>
+		<small class="example" id="example">Заповніть всі поля</small>
+			<div class="ask">
+				<input type="number" id="ch1" class='askk'>
+				<input type="number" id="ch2" class='askk'>
+				<input type="number" id="ch3" class='askk'><br>
+				<input type="number" id="ch4" class='askk'>
+				<input type="number" id="ch5" class='askk'>
+				<input type="number" id="ch6" class='askk'><br>
+				<input type="number" id="ch7" class='askk'>
+				<input type="number" id="ch8" class='askk'>
+				<input type="number" id="ch9" class='askk'>
+			</div>
+		<h1 class="rezult" id="rezult"></h1>
+		<div class="butt">
+			<button id="but">Обчислити</button>
+			<button id="c">C</button>
+		</div>
+	</div>
+	
+	
+	<script>
+		var ch1 = document.getElementById('ch1');
+		var ch2 = document.getElementById('ch2');
+		var ch3 = document.getElementById('ch3');
+		var ch4 = document.getElementById('ch4');
+		var ch5 = document.getElementById('ch5');
+		var ch6 = document.getElementById('ch6');
+		var ch7 = document.getElementById('ch7');
+		var ch8 = document.getElementById('ch8');
+		var ch9 = document.getElementById('ch9');
+		var answ1 = document.getElementById('answ1');
+		var answ2 = document.getElementById('answ2');
+		var answ3 = document.getElementById('answ3');
+		var but = document.getElementById('but');
+		var rezult = document.getElementById('rezult');
+		var c = document.getElementById('c')
+
+		var index1 = ch1;
+		var index2 = ch2;
+		var index3 = ch3;
+		var index4 = ch4;
+		var index5 = ch5;
+		var index6 = ch6;
+		var index7 = ch7;
+		var index8 = ch8;
+		var index9 = ch9;
+		
+		var ages = [ch1, ch2,ch3, ch4, ch5, ch6, ch7, ch8, ch9];
+
+		function checkval(inp) {
+		    return inp.value !== '';
+		}
+
+		function val1(){
+			var a = index1.value * index5.value * index9.value;
+			var b = index2.value * index6.value * index7.value;
+			var c = index3.value * index4.value * index8.value;
+			var d = index7.value * index5.value * index3.value;
+			var e = index8.value * index6.value * index1.value;
+			var f = index9.value * index4.value * index2.value;
+			var suma = a+b+c-e-d-f;
+
+			document.getElementById("example").style.color = 'red';
+			
+			if(ages.every(checkval) === true) {
+				rezult.textContent = a + ' + ' + b + ' + ' + c + ' - ' + d + ' - ' + e + ' - ' + f + ' = ' + suma;
+				document.getElementById("example").style.color = 'black';
+		}
+			
+			
+		}
+		function reset(){
+			ch1.value = '';
+			ch2.value = '';
+			ch3.value = '';
+			ch4.value = '';
+			ch5.value = '';
+			ch6.value = '';
+			ch7.value = '';
+			ch8.value = '';
+			ch9.value = '';
+			rezult.textContent = '';
+			index1.focus();	
+		}
+		c.addEventListener('click' , reset)
+
+		index1.focus()
+		but.addEventListener('click' , val1)
+	</script>
+</body>
+</html>

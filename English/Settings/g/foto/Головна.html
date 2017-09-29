@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)file:///C:/project1/tml.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Головна</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 	 
+<style type="text/css">
+	body{
+	margin:0;
+	padding: 0;
+	
+	background-image: linear-gradient(to left ,  lightgreen,lightyellow ,lightgreen) 
+}
+		h1{
+			font-size: 30px;
+			text-align: center;
+			display: none;
+			
+		}
+		.information{
+			width: 350px;
+			height: 380px;
+			margin-left: auto;
+			margin-right: auto;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.5);	
+			background: white;
+			border: 0.1px solid white;
+			margin-top: 20px;
+			border-radius: 30px;
+			
+		}
+		.vnutr{
+			width: 100%;
+			height: 270px;
+			box-shadow: 0px 0px 5px rgba(0,0,0,1);
+			background: white;
+			border: 0.1px solid white;
+			border-radius: 30px;
+		}
+		#next{
+			width: 220px;
+			height: 35px;
+			display: block;
+			margin: auto;
+			margin-top: 33px;
+			background:#00CD00;
+			border: none;
+			outline: none;
+			box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3);
+			font-size: 17px;
+		}
+		#next:hover{
+			color: white;
+		}
+		p{
+			text-align: center;
+			color: red ;
+			font-size: 20px;
+			display: none;	
+		}
+		input{
+			width: 280px;
+			height: 30px;
+			border: 1px solid black;
+			margin-right: auto;
+			margin-left: auto;
+			display: block;
+			font-size: 21px;
+			text-align: center;
+			border-color: lightblue;
+			border-radius: 10px;
+			outline: none; 
+			border-width: 1.5px;
+			display: none;
+
+		}
+		input:focus{
+			background: lightyellow;
+			border-color: blue; 
+		}
+		#vidp{
+			width: 140px;
+			height: 30px;
+			margin:auto;
+			margin-top: 30px;
+			display: none;	
+			background:#00CD00;
+			border: none;
+			outline: none;
+			box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3);
+			font-size: 17px;
+		}
+		#vidp:hover{
+			color: white;
+			transform: scale(0.99);
+		}
+		img{
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 100%;
+			height: 100%;
+			border-radius: 20px;
+		}
+		#p1{
+			color: black;
+			background-image: linear-gradient(to right , white , lightblue , white)
+		}
+		.span{
+			width: 30px;
+			height: 30px;
+			background: white	;
+			display: block;
+			position: absolute;
+			margin-top: -30px;
+			margin-left: 280px;
+			font-size: 28px;
+			text-align: center;	
+		}
+		
+		#ask{
+			outline: none;
+			border: none;
+			box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+			display: none;
+		}
+		#ask:hover{
+			box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+			background: white
+		}
+		
+		@media screen and (max-device-width: 700px){
+			#inf{			
+				width: 100%;
+				height: 500px
+			}
+			#vn{
+				width: 100%;
+			}
+			img{
+				width: 100%;
+			}
+			#next{
+				max-width: 220px
+			}
+		}
+	
+		#r1 , #r2{
+			display: none;
+		}
+		
+		#restar{
+			display: none;
+			width: 240px;
+			height: 35px;
+			margin:auto;
+			margin-top: 30px;
+			display: none;	
+			background:#00CD00;
+			border: none;
+			outline: none;
+			box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3);
+			font-size: 17px;
+
+		}
+		#restar:hover{
+			color: white;
+			box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.3);
+		}
+	</style></head>
+	
+	<body>
+
+			<div class="information" id="inf" style="height: 270px;">
+			<div class="vnutr" id="vn">
+			<h1 id="r1" style="display: block;">Правильно: 0</h1>
+			<h1 id="r2" style="display: block;">Неправильно:</h1>
+			<button id="restar" style="display: block;">Спробувати щераз</button>
+			<img src="./Головна_files/english.png" style="display: none;">
+			<h1 id="h1" style="display: none;">again</h1>
+			<p id="p1" style="display: none;">2 варіанти через кому</p>
+			<input type="text" id="input" name="" autofocus="" style="display: none;">
+			<button id="vidp" style="display: none;">Відповісти</button>
+			<button class="span" id="ask" style="display: none;">?</button>	
+			<p id="p" style="display: none;"></p>
+			</div> 
+			<button id="next" style="display: none;">Результат</button>
+			</div>
+			
+			
+			
+		
+
+		<script type="text/javascript">
+			
+			
+
+			//varibls
+			var a = 0;
+			var res = document.getElementById('restar');
+			var r1 = document.getElementById('r1');
+			var r2 = document.getElementById('r2');
+			var input = document.getElementById('input');
+			var h1 = document.getElementById('h1');
+			var inf = document.getElementById('inf');
+			var vd = document.getElementById('vidp');
+			var p1 = document.getElementById('p1');
+			var p = document.getElementById('p');
+			var next = document.getElementById('next');
+			var img = document.getElementsByTagName('img')[0];
+			var ask = document.getElementById('ask');
+
+			var index = -1;
+			var slov = [slovo0 , slovo1 , slovo2 , slovo3 , slovo4 , slovo5 , slovo6 , slovo7 , slovo8 , slovo9]
+			//function
+			function slova(){
+				index++;
+				var func = slov[index]
+				func.call();
+				input.value = '';
+				p.innerHTML = "";
+				ask.style.display = "none";
+
+				if(index == slov.length -1){
+					input.style.display = "none";
+					p.style.display = "none";
+					h1.style.display = "none";
+					vd.style.display = "none";
+					img.style.display = 'none';
+					p1.style.display = "none";
+					p1.innerHTML = "2 варіанти через кому";
+					r1.style.display = "block"
+					r2.style.display = "block";
+					restar.style.display = "block";
+					inf.style.height = "270px";
+					next.style.display = "none";
+					r1.innerHTML += " " + a;
+					index = -1;
+				}
+
+				if(index == slov.length-2){
+					next.innerHTML = "Результат";
+				}
+			
+				if(index == 0){
+					vd.addEventListener('click' , slovo10);
+				}
+				if(index == 1){
+					vd.addEventListener('click' , slovo11);
+				}
+
+				if(index == 2){
+					vd.addEventListener('click' , slovo12);
+				}
+				if(index == 3){
+					vd.addEventListener('click' , slovo13);
+				}
+				if(index == 4){
+					vd.addEventListener('click' , slovo14);
+				}
+				if(index == 5){
+					vd.addEventListener('click' , slovo15);
+				}
+				if(index == 6){
+					vd.addEventListener('click' , slovo16);
+				}
+				if(index == 7){
+					vd.addEventListener('click' , slovo17);
+				}
+				if(index == 8){
+					vd.addEventListener('click' , slovo18);
+				}
+				if(index == 9){
+					vd.addEventListener('click' , slovo19);
+				}
+			};
+			function rest(){
+				img.style.display = "block";
+				inf.style.height = '380px';
+				next.style.display = 'block';
+				r1.style.display = "none";
+				r2.style.display = "none";
+				res.style.display = "none";
+				next.innerHTML = "Розпочати";
+
+			}
+			res.addEventListener('click' ,  rest);
+			next.addEventListener('click' , slova);
+
+			
+
+			function slovo0(){
+				h1.innerHTML = 'across';
+				next.innerHTML = "Наступне слово";
+
+				input.style.display = "block";
+				p.style.display = "block";
+				h1.style.display = "block";
+				vd.style.display = "block";
+				img.style.display = 'none';
+				p1.style.display = "block";
+				p1.innerHTML = "2 варіанти через кому";
+
+
+			}
+			function slovo10() {
+				vid = false;
+				if (input.value == 'через , поперек') {
+					vid = true;
+					p.innerHTML = 'Правильно!';
+					p.style.color = "blue"
+					
+				}
+				if(vid == false){
+					p.innerHTML = "Непрвильно!"
+					p.style.color = "red"
+					ask.style.display = "block";
+					return a += 1;
+					
+					ask.addEventListener('click' , function () {
+						input.value = "через , поперек";
+						p.innerHTML = 'Правильно!';
+						p.style.color = "blue";
+						ask.style.display = "none";
+
+					})
+				}
+
+			}
+			function slovo1(){
+				h1.innerHTML = 'accept'
+				p1.innerHTML = "2 варіанти через кому";
+			}
+			function slovo11() {
+				vid = false;
+				if (input.value == 'приймати , визнавати') {
+					vid = true;
+					
+					p.innerHTML = "Правильно!";
+					p.style.color = "blue";
+					ask.style.display = "none";
+
+				}
+				if(vid == false){
+					p.innerHTML = "Непрвильно!";
+					p.style.color = "red";
+					ask.style.display = "block";
+					ask.addEventListener('click' , function () {
+						input.value = "приймати , визнавати";
+						p.innerHTML = 'Правильно!';
+						p.style.color = "blue";
+						ask.style.display = "none";
+					});
+				}
+			}
+
+			function slovo2(){
+				h1.innerHTML = 'allow';
+				p1.innerHTML = "1 варіант"
+			}
+			function slovo12() {
+				vid = false;
+				if (input.value == 'дозволяти') {
+					vid = true;
+					p.innerHTML = "Правильно!";
+					p.style.color = "blue"
+					ask.style.display = "none"
+				}
+				if(vid == false){
+					p.innerHTML = "Непрвильно!"
+					p.style.color = "red"
+					ask.style.display = "block";
+					ask.addEventListener('click' , function () {
+						input.value = "дозволяти";
+						p.innerHTML = 'Правильно!';
+						p.style.color = "blue";
+						ask.style.display = "none";
+					})
+				}
+			}function slovo3(){
+				h1.innerHTML = 'able';
+				p1.innerHTML = "2 варіанти через кому"
+			}
+			function slovo13() {
+				vid = false;
+				if (input.value == 'здатний , спроможний') {
+					vid = true;
+					p.innerHTML = "Правильно!";
+					p.style.color = "blue"
+					ask.style.display = "none"
+				}
+				if(vid == false){
+					p.innerHTML = "Непрвильно!"
+					p.style.color = "red"
+					ask.style.display = "block";
+					ask.addEventListener('click' , function () {
+						input.value = "здатний , спроможний";
+						p.innerHTML = 'Правильно!';
+						p.style.color = "blue";
+						ask.style.display = "none";
+					})
+				}
+			}function slovo4(){
+				h1.innerHTML = 'above';
+				p1.innerHTML = "2 варіанти через кому";
+			}
+			function slovo14() {
+				vid = false;
+				if (input.value == 'вище , вищезгаданий') {
+					vid = true;
+					p.innerHTML = "Правильно!";
+					p.style.color = "blue"
+					ask.style.display = "none"
+				}
+				if(vid == false){
+					p.innerHTML = "Непрвильно!"
+					p.style.color = "red"
+					ask.style.display = "block";
+					ask.addEventListener('click' , function () {
+						input.value = "вище , вищезгаданий";
+						p.innerHTML = 'Правильно!';
+						p.style.color = "blue";
+						ask.style.display = "none";
+					})
+				}
+			}function slovo5(){
+				h1.innerHTML = 'act';
+				p1.innerHTML = "2 варіанти через кому"
+			}
+			function slovo15() {
+				vid = false;
+				if (input.value == 'діяти , акт') {
+					vid = true;
+					p.innerHTML = "Правильно!";
+					p.style.color = "blue"
+					ask.style.display = "none"
+				}
+				if(vid == false){
+					p.innerHTML = "Непрвильно!"
+					p.style.color = "red"
+					ask.style.display = "block";
+					ask.addEventListener('click' , function () {
+						input.value = "діяти , акт";
+						p.innerHTML = 'Правильно!';
+						p.style.color = "blue";
+						ask.style.display = "none";
+					})
+				}
+			}function slovo6(){
+				h1.innerHTML = 'action';
+				p1.innerHTML = "2 варіанти через кому"
+			}
+			function slovo16() {
+				vid = false;
+				if (input.value == 'акція , діяльність') {
+					vid = true;
+					p.innerHTML = "Правильно!";
+					p.style.color = "blue"
+					ask.style.display = "none"
+				}
+				if(vid == false){
+					p.innerHTML = "Непрвильно!"
+					p.style.color = "red"
+					ask.style.display = "block";
+					ask.addEventListener('click' , function () {
+						input.value = "акція , діяльність";
+						p.innerHTML = 'Правильно!';
+						p.style.color = "blue";
+						ask.style.display = "none";
+					})
+				}
+			}function slovo7(){
+				h1.innerHTML = 'afraid';
+				p1.innerHTML = "2 варіанти через кому"
+			}
+			function slovo17() {
+				vid = false;
+				if (input.value == 'наляканий , заляканий') {
+					vid = true;
+					p.innerHTML = "Правильно!";
+					p.style.color = "blue"
+					ask.style.display = "none"
+				}
+				if(vid == false){
+					p.innerHTML = "Непрвильно!"
+					p.style.color = "red"
+					ask.style.display = "block";
+					ask.addEventListener('click' , function () {
+						input.value = "наляканий , заляканий";
+						p.innerHTML = 'Правильно!';
+						p.style.color = "blue";
+						ask.style.display = "none";
+					})
+				}
+			}function slovo8(){
+				h1.innerHTML = 'after';
+				p1.innerHTML = "1 варіант"
+			}
+			function slovo18() {
+				vid = false;
+				if (input.value == 'після') {
+					vid = true;
+					p.innerHTML = "Правильно!";
+					p.style.color = "blue"
+					ask.style.display = "none"
+				}
+				if(vid == false){
+					p.innerHTML = "Непрвильно!"
+					p.style.color = "red"
+					ask.style.display = "block";
+					ask.addEventListener('click' , function () {
+						input.value = "після";
+						p.innerHTML = 'Правильно!';
+						p.style.color = "blue";
+						ask.style.display = "none";
+					})
+				}
+			}function slovo9(){
+				h1.innerHTML = 'again';
+				p1.innerHTML = "1 варіант"
+			}
+			function slovo19() {
+				vid = false;
+				if (input.value == 'знову') {
+					vid = true;
+					p.innerHTML = "Правильно!";
+					p.style.color = "blue"
+					ask.style.display = "none"
+				}
+				if(vid == false){
+					p.innerHTML = "Непрвильно!"
+					p.style.color = "red"
+					ask.style.display = "block";
+					ask.addEventListener('click' , function () {
+						input.value = "знову";
+						p.innerHTML = 'Правильно!';
+						p.style.color = "blue";
+						ask.style.display = "none";
+					})
+				}
+			}
+		</script>
+	
+</body></html>

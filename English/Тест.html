@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Курси</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+</head>
+	<style type="text/css">
+		html, body{
+			height: 100%;
+			padding: 0px;
+			padding: 0 0px;
+			background: ;
+			margin: 0px;
+		}
+		.logo{
+			background-image: url(foto/o.jpg);
+			height: 20%; 
+		    background-attachment: fixed;
+		    background-position: center;
+		    background-repeat: no-repeat;
+		    background-size: 100% 100%;
+		    font-size: 23px;
+		  	padding: 18% 40%;
+		}
+		.pyt{
+			width: 50px;
+			height: 36px;
+			border: px solid black;
+			margin-right: auto;
+			margin-left: auto;
+			border-radius: 50%;
+			animation-name: lift-up;
+    		animation-duration: 0.8s;			
+    		animation-iteration-count: infinite;
+    		background: ;
+    		padding-top: 14px;
+		}
+		.pyt:after{
+			content: "";
+			display: block;
+			border: 17px solid white;
+			width: 0px;
+			height: 0px;
+			margin-bottom: 100px;
+			margin-left: auto;
+			margin-right: auto;
+			border-top: none;
+			border-left: none;
+			border-right-color: transparent; 
+			transform: rotate(-45deg); 
+			
+		}
+		@keyframes lift-up {
+		  	from{
+		  		transform: translateY(0px);
+		  	}	
+		  	50%{
+		  		transform: translateY(10px);
+		  	}
+		  	100%{
+		  		transform: translateY(-1px);
+		  	}		    
+
+		}
+		.cont{
+			width: 100%;
+			height: 100%;
+			background: white;
+		}
+		.scrol{
+			color: white;
+			text-align: center;
+			font-family: "Segoe UI";
+			display: block;
+		}
+		.kurs{
+			max-width: 100%;
+			padding-top: 64px;
+			padding-bottom: 64px;
+			background: lightgray;
+			height: auto;
+			display: flex;
+			justify-content: center;
+		}
+		.content{
+			height: auto;
+			background: white;
+			width: 35%;
+			background: white;
+			border: 1px solid #ccc;
+		}
+		.tit{
+			text-align: center;
+			padding: 20px 0px;
+			height: auto;
+			display: block;
+			width: 100%;
+			font-family: Verdana,sans-serif;
+			color: white;
+			background:  #666666;
+			font-size: 25px;
+
+		}
+		.a1{
+			
+		}
+		a{
+			text-decoration: none;
+			text-align: center;
+			padding: 20px 0px;
+			height: auto;
+			display: block;
+			width: 100%;
+			font-family: Verdana,serif;
+			color: black;
+			background: white;
+			font-size: 20px;
+			border-bottom: 1px solid #ccc;
+		}
+		a:hover{
+			background: #009688;
+			color: white;
+		}
+		a:hover b{
+			color: white;
+		}
+		b{
+			color: #009688;
+			padding: 0px 10px;
+			line-height: 0.1px;
+			padding-bottom: 5px;
+		}
+	</style>
+<body>
+	<div class="logo">
+		<h1 class="scrol" id="t">English</h1>
+		<div class="pyt"></div>
+	</div>
+	<div class="cont" id="work">
+		<div class="kurs">
+			<div class="content">
+
+				<div class="tit">Курси</div>
+				<a href="experm.html"> Тест 1<b>easy</b></a>	
+				<a href="Settings/b/gol2.html"> Тест 2<b>middle</b></a>	
+				<a href="Settings/c/gol3.html"> Тест 3<b>hard</b></a>						
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		var a = document.getElementById('a');
+		var w = document.getElementById('work');
+		
+		setTimeout(scrol , 2000)
+
+		function scrol() {
+			scrollBy(0 , 0);
+
+		}
+
+	</script>
+</body>
+</html>

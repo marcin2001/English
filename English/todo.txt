@@ -1,0 +1,209 @@
+TODO:
+
+1. change 'innerHTML' to 'textCotent'; -- зроби це останнім - коли все інше буде зроблене і працюватиме
+
+2. pass arguments to the function; -- передостаннім
+2.1 створити окремий масив з масивами правильних відповідей
+var globalObject = {
+	0: ['через', 'поперек'],
+	1: ['майже]
+}
+
+
+3. always use '==='
+
+
+
+1) створити масив із введеної стріги (input.value), на основі розділювача (коми) -- 
+var wordsArray = string.split(',')
+2) для кожного значення в масиві - обрізаємо пробіли ---
+for(var i = 0; i < wordsArray.length; i++) {
+	wordsArray[i] = wordsArray[i].trim(); 
+}
+3) порівняти два масиви на одаковість функцією checkAnswer.
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Тренажер 1</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 	 
+	<meta charset="utf-8">
+</head>
+	<style type="text/css">
+		.content{
+			width: 601px;
+			height: 350px;
+			border: 1px solid black;
+			margin-right: auto;
+			margin-left: auto;
+			margin-top: 50px;
+		}
+		.ask, .variants{
+			width: 300px;
+			height: 100%;
+			float: left;
+		}
+		.ask{
+			
+		}
+		.variants{
+			border-left: 1px solid gray;
+		}
+		.slovo{
+			text-align: center;
+			margin-top: 65px;
+		}
+		.bolin{
+			text-align: center;
+			font-size: 20px;
+			margin-top: 20px
+		}
+		img{
+			width: 100px;
+			height: 100px;
+			display: block;
+		}
+		.im{
+			width: 100px;
+			height: 100px;
+			margin-left: auto;
+			margin-right: auto;
+			box-shadow: 0px 0px 0px gray;
+		}
+		button{
+			width: 250px;
+			height: 40px;
+			margin-bottom: 20px;
+			font-size: 16px
+		}
+		.contVar{
+			width: 250px;
+			height: 220px;	
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 60px
+		}
+		#g[disabled]{
+			cursor: not-allowed;
+		}
+		#g:hover:not([disabled]){
+			color: white;
+		}
+	</style>
+<body>
+		<div class="content">
+			<div class="ask">
+				<h1 class="slovo" id="slovo"></h1>
+				<div class="im">
+					<img id="img" src="Settings/a/foto/ask.jpg">
+				</div>	
+				<p class="bolin" id="bol"></p>
+				
+			</div>
+			<div class="variants">
+				<div class="contVar">
+					<button id="var1"></button>
+					<button id="var2"></button>
+					<button id="var3"></button>
+					<button id="var4"></button>
+				</div>
+			</div>
+		</div>
+		<button id="g">efb,kndbvsdvbs nmf.</button>
+
+		<script type="text/javascript">
+			// varibls
+			var bolin = document.getElementById('bol');
+			var img = document.getElementById('img');
+			var var1 = document.getElementById('var1');
+			var var2 = document.getElementById('var2');
+			var var3 = document.getElementById('var3');
+			var var4 = document.getElementById('var4');
+			var g = document.getElementById('g');
+			var slovo = document.getElementById('slovo');
+
+			// function
+				
+				var ind = -1;
+				var sl = [var1,var2,var3,var4];
+				
+				var index = -1;
+			 	var askWord = [
+			 		['across'],
+			 		['accept'],
+			 		['allow'],
+			 		['able'],
+			 		['above']
+				];
+				
+				var arrWord = [
+					['через', ' поперек'],
+					['приймати', ' визнавати'],
+					['дозволяти'],
+					['здатний',' спроможний'], 
+					['вище', ' вищезгаданий'],
+					
+				];
+				
+				
+				boline();
+				g.addEventListener('click' , boline)
+				function boline(){
+					var1.innerHTML = null;
+					var2.innerHTML = null;
+					var3.innerHTML = null;
+					var4.innerHTML = null;
+					
+					
+					o();
+					var randansw = Math.floor(Math.random() * sl.length );
+					var len = sl[randansw];
+					
+					index++;
+					var ver = arrWord[index];
+					len.textContent = ver;	
+					len.addEventListener('click' , w)				
+					g.disabled = 'disabled';
+					var askw = askWord[index];
+					slovo.textContent = askw;
+									
+				}
+				function check(){
+					g.innerHTML = 'false'
+				}
+				function w(){
+					g.textContent = 'Наступне слово';
+					g.disabled = false;
+					
+				}
+				function o(){
+					var rand1 = Math.floor(Math.random() * arrWord.length);
+					var rand2 = Math.floor(Math.random() * arrWord.length);
+					var rand3 = Math.floor(Math.random() * arrWord.length);
+					var rand4 = Math.floor(Math.random() * arrWord.length);
+					var fun1 = arrWord[rand1];
+					var fun2 = arrWord[rand2];
+					var fun3 = arrWord[rand3];
+					var fun4 = arrWord[rand4];
+					
+					
+					var1.textContent = fun1;
+					var1.addEventListener('click' , check)
+					var2.textContent = fun2;
+					var2.addEventListener('click' , check)
+					var3.textContent = fun3;
+					var3.addEventListener('click' , check)
+					var4.textContent = fun4;
+					var3.addEventListener('click' , check)
+
+				}
+				function er(){
+					g.textContent = "Неправильно!"
+				}
+				function u(){
+					img.style.display = "none"
+				}
+		</script>
+</body>
+</html>

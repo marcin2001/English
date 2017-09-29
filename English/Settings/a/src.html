@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>src</title>
+</head>
+	<style type="text/css">
+		
+	</style>
+<body>
+
+	<input type="text" id="inp">
+	<button id="button">retur</button>
+	<button id="b">jabns r skfbkf</button>
+	<h1 id="h1"></h1>
+
+	<script type="text/javascript">
+		a = 0;
+		var inp = document.getElementById('inp');
+		var button = document.getElementById('button');
+		var h1 = document.getElementById('h1');
+		var b = document.getElementById('b');
+
+		button.addEventListener("click" , rez)
+
+		function rez() {
+			
+			tr = false;
+			if(inp.value == "q"){
+				tr = true
+				h1.innerHTML = "kdlnvnnrvnsnkv;n;"
+				
+			}
+			if(tr == false){
+				h1.innerHTML = funo().call();
+			}
+
+		}
+		b.addEventListener("click" , ag)
+		function funo(){
+			
+			a += 1;
+			
+		}
+		function ag(){
+			h1.innerHTML = a;
+		}
+	</script>
+</body>
+</html>

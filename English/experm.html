@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Тренажер 1</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 	 
+	<meta charset="utf-8">
+</head>
+	<style type="text/css">
+		body{
+			margin: none;
+			padding: none;
+			background-image: linear-gradient(to right, lightyellow, white, white, white, lightyellow)
+		}
+		.content{
+			width: 601px;
+			height: 350px;
+			border: 1px solid gray;
+			border-bottom: one;
+			border-top: none;
+			margin-right: auto;
+			margin-left: auto;
+			margin-top: px;
+		}
+		.ask, .variants{
+			width: 300px;
+			height: 100%;
+			float: left;
+		}
+		
+		.variants{
+			border-left: 1px solid gray;
+
+			text-align: center;
+		}
+		.slovo{
+			text-align: center;
+			margin-top: 65px;
+		}
+		.bolin{
+			text-align: center;
+			font-size: 20px;
+			margin-top: 20px
+		}
+		img{
+			width: 100%;
+			height: 100%;
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+		}
+		.im{
+			width: 100px;
+			height: 100px;
+			margin-left: auto;
+			margin-right: auto;
+			box-shadow: 0px 0px 0px gray;
+		}
+		button{
+			width: 250px;
+			height: 40px;
+			margin-bottom: 20px;
+			font-size: 16px;
+			outline: none;
+			border: 1px solid #ccc;
+			
+		}
+		button:hover{
+			transform: scale(1.01);
+			border: none;
+			box-shadow: inset 0px 0px 1px rgba(0,0,0,1);
+		}
+		.contVar{
+			width: 250px;
+			height: 220px;	
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 60px
+		}
+		#g[disabled]{
+			cursor: not-allowed;
+		}
+		#g:hover:not([disabled]){
+			color: white;
+		}
+		#rel{
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			background: #009688;
+			color: white;
+		}
+		#demo1 ,#demo2, #rel{
+			display: none;
+		}
+		#demo1{
+			color: black;
+			margin-top: 75px;
+		}
+		#demo2{
+			color: red;
+		}
+		@media screen and (max-width: 650px){
+			.ask, .variants{
+				float: none;	
+				height: 350px;
+				
+				border: none;
+			}
+			.ask{
+				height: 320px;
+			}
+			.variants{
+				border-top: 1px solid black;
+				height: 370px;
+				margin-top: -25px
+			}
+			.content{
+				height: 700px;
+				width: 301px;
+			}
+		}
+		.rez{
+			display: flex;
+			justify-content: center;
+			margin: px;
+			margin-top: 50px
+		}
+		#l2 , #l{
+			float: left;
+			font-size: 17px;
+			margin: 10px;
+			color: gray;
+			font-family: sans-serif, 'Times';
+			text-align: center;
+			margin-right: auto;
+			margin-left: auto;	
+			display: block;
+		}
+		#l2{
+			margin-left: 80px;
+		}
+		#l{
+			margin-left: 65px;
+		}
+		#l1{
+			color: red
+		}
+		#l1l{
+			color: blue
+		}
+		.d1,.d2{
+			width: 300px;
+			height: 100%;
+			text-align:center;
+		}
+		.d1{
+			
+			border: 1px solid #00CD00;
+			border-right: none;
+		
+		}
+		.d2{
+			border: 1px solid #00CD00;
+			border-left:none;
+		}
+	</style>
+<body>
+		
+		<div class="rez">
+			<div class="d1"><h1 id="l2">Кількість слів: <b id="l1l"></b>;</h1></div>
+			<div class="d2"><h1 id="l">Залишилось слів: <b id="l1"></b>;</h1></div>
+		</div>
+		<div class="content">
+			
+			<div class="ask">
+				<h1 class="slovo" id="slovo"></h1>
+				<div class="im" id="img">
+					<img id="imgg" src="foto/ask.jpg">
+				</div>	
+				<p class="bolin" id="bol"></p>
+				
+			</div>
+			<div class="variants">
+			<h1 id="demo1">Правильно: </h1>
+			<h1 id="demo2">Неправильно: </h1>
+			<button id="rel">Спробувати щераз</button>
+				<div class="contVar" id="buttons-container">
+					<button id="var1"></button>
+					<button id="var2"></button>
+					<button id="var3"></button>
+					<button id="var4"></button>
+				</div>
+			</div>
+		</div>
+		
+
+		<script type="text/javascript">
+			// varibls
+			var d1 = document.getElementById('d1');
+			var d2 = document.getElementById('d2');
+			var rel = document.getElementById('rel');
+			var bolin = document.getElementById('bol');
+			var img = document.getElementById('img');
+			var var1 = document.getElementById('var1');
+			var var2 = document.getElementById('var2');
+			var var3 = document.getElementById('var3');
+			var var4 = document.getElementById('var4');
+			var buttonsContainer = document.getElementById('buttons-container');
+			var slovo = document.getElementById('slovo');
+			var currentWordIndex = -1;
+			var demo = document.getElementById('demo');
+			var im = document.getElementById('imgg');
+			var l1 = document.getElementById('l1');
+			var l2 = document.getElementById('l1l')
+			var h1 = document.getElementById('l');
+			var h2 = document.getElementById('l2');
+			
+
+			buttonsContainer.addEventListener('click', checkResponse)
+
+			function checkResponse(event) {
+				var answerText = event.target.textContent;
+				var answerArray = processAnswer(answerText);
+				var answerIsCorrect = checkAnswer(answerArray, arrWord[currentWordIndex])
+				if (answerIsCorrect) {
+					w();
+				}
+			}
+
+			function processAnswer(answerString) {
+				var answerArray = answerString.split(',');
+
+				for(var i = 0; i < answerArray.length; i++) {
+					answerArray[i] = answerArray[i].trim(); 
+				}
+				return answerArray;
+			}
+
+			function checkAnswer(userAnswer, correctAnswer) {
+				if(userAnswer.length !== correctAnswer.length) { return false }
+				var correctNum = 0;
+				for(var i = 0; i < userAnswer.length; i++) {
+					if (correctAnswer.indexOf(userAnswer[i]) > -1) {
+						correctNum++;
+					}
+				}
+				return (correctNum === correctAnswer.length) ? true : false;
+				
+			}
+
+			// function
+
+				var ind = -1;
+				var sl = [var1,var2,var3,var4];
+				var a = 150;
+
+
+				var index = -1;
+			 	var askWord = [
+			 		['accept'],
+			 		['young'],
+			 		['allow'],
+			 		['able'],
+			 		['above'],
+			 		['almost'],
+			 		['before'],
+					['beginning'],
+					['believe'],
+					['better'],
+					['between'],
+					['beyond'],
+					['correct'],
+					['cold'],
+					['clothes'],
+					['close'],
+					['clean'],
+					['check'],
+					['cheap'],
+					['cheese'],
+					['duty'],
+					['drop'],
+					['drink'],
+					['divide'],
+					['detail'],
+					['deep'],
+					['death'],
+					['describe'],
+					['future'],
+					['full'],
+					['fresh'],
+					['forget'],
+					['force'],
+					['find'],
+					['few'],
+					['far'],
+					['fell'],
+					['fair'],
+					['factory'],
+					['famous'],
+					['fast'],
+					['danger'],
+					['decide'],
+					['distance'],
+					['doubt'],
+					['driver'],
+					['dry'],
+					['duty'],
+					['drop'],
+					['drive'],
+					['divide'],
+					['empty'],
+					['enemy'],
+					['enough'],
+					['even'],
+					['event'],
+					['everybody'],
+					['excuse'],
+					['example'],
+					['explain'],
+					['experience'],
+					['fresh'],
+					['forget'],
+					['force'],
+					['find'],
+					['few'],
+					['far'],
+					['fell'],
+					['fair'],
+					['great'],
+					['grow'],
+					['guide'],
+					['ground'],
+					['grass'],
+					['government'],
+					['garden'],
+					['gate'],
+					['gloves'],
+					['grateful'],
+					['hard'],
+					['hat'],
+					['health'],
+					['heart'],
+					['heat'],
+					['heavy'],
+					['hot'],
+					['however'],
+					['hurry'],
+					['important'],
+					['inside'],
+					['instead'],
+					['include'],
+					['just'],
+					['job'],
+					['jump'],
+					['keep'],
+					['kick'],
+					['kiss'],
+					['law'],
+					['lift'],
+					['local'],
+					['let’s'],
+					['main'],
+					['make'],
+					['many'],
+					['maybe'],
+					['must'],
+					['now'],
+					['narrow'],
+					['neck'],
+					['need'],
+					['never'],
+					['often'],
+					['over'],
+					['other'],
+					['opposite'],
+					['past'],
+					['price'],
+					['prove'],
+					['probably'],
+					['quickly'],
+					['quiet'],
+					['quite'],
+					['rather'],
+					['repeat'],
+					['respect'],
+					['rich'],
+					['road'],
+					['sad'],
+					['say'],
+					['seem'],
+					['several'],
+					['simple'],
+					['slowly'],
+					['there'],
+					['think'],
+					['throw'],
+					['together'],
+					['turn'],
+					['us'],
+					['use'],
+					['usually'],
+					['view'],
+					['visit'],
+					['voice'],
+					['weak'],
+					['wait'],
+					['when'],
+					['who'],
+					['across']
+				];
+
+				var arrWord = [
+					['приймати', 'визнавати'],
+					['молодий'],
+					['дозволяти'],
+					['здатний','спроможний'], 
+					['вище', 'вищезгаданий'],
+					['майже'],
+					['до', 'перед'],
+					['початок'],
+					['вірити'],
+					['краще'],
+					['між'],
+					['за', 'за межами'],
+					['правильний', 'вірний'],
+					['холод', 'холодний'],
+					['одяг', 'білизна'],
+					['закрити', 'тісний'],
+					['чистота', 'чистити'],
+					['чек', 'перевірка'],
+					['дешевий'],
+					['сир'],
+					['борг', 'обовязок'],
+					['падати', 'падіння'],
+					['пити', 'напій'],
+					['ділити', 'поділ'],
+					['деталь', 'детально'],
+					['глибоко', 'глибина'],
+					['смерть'],
+					['описувати'],
+					['майбутнє'],
+					['повний'],
+					['свіжий'],
+					['забути'],
+					['сила', 'примусити'],
+					['знайти', 'знахідка'],
+					['декілька', 'кілька'],
+					['далеко'],
+					['впав'],
+					['справедливий', 'чесний'],
+					['фабрика', 'завод'],
+					['знаменитий', 'відомий'],
+					['швидко', 'швдкий'],
+					['небезпека'],
+					['вирішити', 'вирішувати'],
+					['відстань'],
+					['сумнів'],
+					['водій'],
+					['сухий', 'сухість'],
+					['борг', 'обовязок'],
+					['падати', 'падіння'],
+					['пити', 'напій'],
+					['ділити', 'поділ'],
+					['порожній', 'спорожнювати'],
+					['ворог', 'противник'],
+					['достить', 'достатньо'],
+					['навіть', 'рівний'],
+					['подія', 'випадок'],
+					['всі', 'всім'],
+					['виправдання', 'вибачення'],
+					['приклад', 'наприклад'],
+					['пояснювати'],
+					['досвід'],
+					['свіжий'],
+					['забути'],
+					['сила', 'примусити'],
+					['знайти', 'знахідка'],
+					['декілька', 'кілька'],
+					['далеко'],
+					['впав'],
+					['справедливий', 'чесний'],
+					['великий'],
+					['рости'],
+					['вести'],
+					['земля', 'грунтувати'],
+					['трава'],
+					['уряд'],
+					['сад'],
+					['ворта'],
+					['рукавиці'],
+					['вдячний'],
+					['важко'],
+					['капелюх'],
+					['здоровя'],
+					['серце'],
+					['тепло'],
+					['важкий'],
+					['гарячий'],
+					['проте', 'однак'],
+					['поспішати'],
+					['важливо'],
+					['всередині'],
+					['замість'],
+					['в тому числі'],
+					['тільки', 'щойно'],
+					['робота', 'наймати'],
+					['стрибок', 'стрибати'],
+					['тримати', 'зберігати'],
+					['удар'],
+					['поцілунок'],
+					['закон'],
+					['піднімати'],
+					['місцевий'],
+					['давайте'],
+					['основний', 'головний'],
+					['робити'],
+					['багато'],
+					['може'],
+					['повинен'],
+					['зараз', 'негайно'],
+					['вузький', 'тісний'],
+					['шия'],
+					['потрібно', 'потреба'],
+					['ніколи'],
+					['часто'],
+					['більше', 'надлишок'],
+					['інший', 'інакше'],
+					['навпаки', 'проти'],
+					['минуле'],
+					['ціна'],
+					['доводити', 'доказувати'],
+					['ймовірно', 'мабуть'],
+					['швидко'],
+					['тиша', 'тихий'],
+					['цілком', 'майже'],
+					['вірніше'],
+					['повторити'],
+					['повага', 'поважати'],
+					['багатий'],
+					['дорога'],
+					['сумний'],
+					['сказати'],
+					['задється', 'ввижається'],
+					['кілька'],
+					['простий'],
+					['повільний'],
+					['там'],
+					['думати', 'міркувати'],
+					['кидати', 'кидок'],
+					['разом'],
+					['поворот', 'повертати'],
+					['нам'],
+					['використовувати'],
+					['зазвичай'],
+					['вид'],
+					['відвідувати'],
+					['голос'],
+					['слабкий'],
+					['чекати'],
+					['коли'],
+					['хто'],
+					['через', 'поперек']
+				];
+				var wider = [0.8, 1.2, 1.6, 2.0, 2, 2.8, 3.2, 3.6, 4, 4.4, 4.8, 5.2, 5.6, 6, ];
+				var t = askWord.length;
+				var ink;
+				var verr;
+				function relod(){
+					location.reload();
+				}
+				rel.addEventListener('click' , relod)
+
+				var er; 
+				boline();
+				
+				l2.textContent += t;
+				function boline(){
+					
+
+					var1.innerHTML = null;
+					var2.innerHTML = null;
+					var3.innerHTML = null;
+					var4.innerHTML = null;
+					var1.style.color = 'black';
+					var2.style.color = 'black';
+					var3.style.color = 'black';
+					var4.style.color = 'black';
+					var1.style.backgroundImage = 'linear-gradient(to top , lightgray , white 100% , lightgray)';
+					var2.style.backgroundImage = 'linear-gradient(to top , lightgray , white 100% , lightgray)';
+					var3.style.backgroundImage = 'linear-gradient(to top , lightgray , white 100% , lightgray)';
+					var4.style.backgroundImage = 'linear-gradient(to top , lightgray , white 100% , lightgray)';
+					askWord.reverse();
+					arrWord.reverse();
+					
+					index++;
+					currentWordIndex++;
+					o();
+					var randansw = Math.floor(Math.random() * sl.length );
+					var len = sl[randansw];
+					er = len;
+					var ver = arrWord[index];
+					verr = ver;
+					er.textContent = verr;		
+					var askw = askWord[index];
+					slovo.textContent = askw;
+					er.style.color = 'black';
+					bolin.textContent = '';	
+					if(index === askWord.length){
+						bolin.style.display = 'none';
+						var1.style.display = "none";
+						var2.style.display = "none";
+						var3.style.display = "none";
+						var4.style.display = "none";
+						slovo.style.display = 'none';  
+						
+						img.style.width = '100%';
+						img.style.height = '100%';
+						im.style.width = '80%';
+						im.style.height = '70%';
+						im.style.marginTop = '50px'
+						demo1.style.display = 'block';
+						demo2.style.display = 'block';
+						rel.style.display = 'block';
+						demo1.textContent += '' + ob;
+						demo2.textContent += '' + err;
+						
+
+						if(ob !== 150){
+							im.src = 'foto/sym.jpg';
+						}
+						if(ob == 150){
+							im.src = 'foto/rad.jpg'
+							im.style.height = 'auto';
+							im.style.marginTop = '80px';
+						}
+						h1.style.display = 'none'
+						h2.style.display = 'none'
+					}
+					ink = i -= 1;
+					l1.textContent = ink; 							
+				}
+				
+				var i = t;
+				var ink;
+
+				l1.textContent =  i;
+				function check(){			
+					er.style.color = "blue";
+					bolin.textContent = 'Неправильно!';
+					bolin.style.color = 'red';	
+					setTimeout(boline , 2000);
+				}
+
+				var err;
+				var ob;
+
+				function w(){
+					bolin.textContent = 'Правильно';
+					bolin.style.color = 'blue';
+					er.style.color = 'white';	
+					er.style.background = '#009688';
+					err = a -= 1;
+					ob = 150 - err;	
+				}
+
+				function o(){
+					var arrayForRandom = arrWord.slice(0);
+					arrayForRandom.splice(index, 1)
+					var rand1 = Math.floor(Math.random() * arrayForRandom.length);
+					var rand2 = Math.floor(Math.random() * arrayForRandom.length);
+					var rand3 = Math.floor(Math.random() * arrayForRandom.length);
+					var rand4 = Math.floor(Math.random() * arrayForRandom.length);
+					var fun1 = arrayForRandom[rand1];
+					var fun2 = arrayForRandom[rand2];
+					var fun3 = arrayForRandom[rand3];
+					var fun4 = arrayForRandom[rand4];
+					
+					
+					var1.textContent = fun1;
+					var1.addEventListener('click' , check)
+					var2.textContent = fun2;
+					var2.addEventListener('click' , check)
+					var3.textContent = fun3;
+					var3.addEventListener('click' , check)
+					var4.textContent = fun4;
+					var4.addEventListener('click' , check)
+
+				}
+				
+				// l.textContent = arrWord.length;
+		</script>
+</body>
+</html>

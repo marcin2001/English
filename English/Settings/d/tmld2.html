@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Тренажер 1</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 	 
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="tml.css">
+</head>
+	<body>
+
+			<div class="information" id="inf">
+			<div class="vnutr" id="vn">
+			<h1 id="r1">Правильно: </h1>
+			<h1 id="r2">Неправильно:</h1>
+			<button id="restar">Спробувати щераз</button>
+			<img src="foto/english.png">
+			<h1 id="h1"></h1>
+			<p id="p1"></p>
+			<input type="text" id="input" name="" autofocus>
+			<button id="vidp">Відповісти</button>
+			<button class="span" id="ask" class="ask">?</button>	
+			<p id="p"></p>
+			</div> 
+			<button id="next">Розпочати</button>
+			</div>
+			
+			
+			
+		
+
+		<script type="text/javascript">
+			
+			
+
+			//varibls
+			var a = 0;
+			var res = document.getElementById('restar');
+			var r1 = document.getElementById('r1');
+			var r2 = document.getElementById('r2');
+			var input = document.getElementById('input');
+			var h1 = document.getElementById('h1');
+			var inf = document.getElementById('inf');
+			var vd = document.getElementById('vidp');
+			var p1 = document.getElementById('p1');
+			var p = document.getElementById('p');
+			var next = document.getElementById('next');
+			var img = document.getElementsByTagName('img')[0];
+			var ask = document.getElementById('ask');
+			var answerW;
+			var onevarisnt = '1 варіант';
+			var twovariant = '2 варіанти через кому';
+			
+			//function
+
+		
+			next.addEventListener('click' , slova);
+			ask.addEventListener('click' , retu);
+			vd.addEventListener('click' , slovo10);
+			res.addEventListener('click' , da2)
+			
+			function rezult(){
+				input.style.display = "none";
+				p.style.display = "none";
+				h1.style.display = "none";
+				vd.style.display = "none";
+				img.style.display = 'none';
+				p1.style.display = "none";
+				r1.style.display = "block"
+				r2.style.display = "block";
+				res.style.display = "block";
+				res.focus();
+				inf.style.height = "270px";
+				next.style.display = "none";
+				r1.innerHTML += " " + 18 - a;
+				r2.innerHTML += " " + a;
+				r2.style.color = "red";
+			}
+			var index = -1;
+			var answer = [
+				['danger'],
+				['decide'],
+				['distance'],
+				['doubt'],
+				['driver'],
+				['dry'],
+				['duty'],
+				['drop'],
+				['drink'],
+				['divide'],
+				['detail'],
+				['deep'],
+				['death'],
+				['describe'],
+				['develop'],
+				['difference'],
+				['discover'],
+				['do']
+			];
+			
+			
+			var askWord = {
+				0:['небезпека'],
+				1:['вирішити', ' вирішувати'],
+				2:['відстань'],
+				3:['сумнів'],
+				4:['водій'],
+				5:['сухий', ' сухість'],
+				6:['борг', ' обовязок'],
+				7:['падати', ' падіння'],
+				8:['пити', ' напій'],
+				9:['ділити', ' поділ'],
+				10:['деталь', ' детально'],
+				11:['глибоко', ' глибина'],
+				12:['смерть'],
+				13:['описувати'],
+				14:['розвивати', ' удосконалювати'],
+				15:['різниця', ' відмінність'],
+				16:['відкривати', ' знаходити'],
+				17:['робити']
+			}
+			
+			
+			function da2(){
+				location.reload()
+			}
+				
+
+			function slova(){
+				index++;
+				var assk = askWord[index];
+				answerW = assk;
+				var answ = answer[index];
+				expected = answ;
+				slovo0();
+				if(expected.length === 2){
+					p1.textContent = twovariant;
+				}
+				if(expected.length === 1){
+					p1.textContent = onevarisnt;
+				}
+				slovo10();
+				next.disabled = 'disabled';
+				input.value = '';
+				p.innerHTML = "";
+				ask.style.display = "none";
+				if(index === answer.length -1){
+					next.addEventListener('click' , rezult)
+				}
+				if(index === answer.length -1){
+					next.textContent = "Результат"
+				}
+				
+				
+			};
+			
+
+			
+			
+			function retu(){
+				a += 1;
+			}
+
+				function processAnswer(answerString) {
+				var answerArray = answerString.split(',');
+
+				for(var i = 0; i < answerArray.length; i++) {
+					answerArray[i] = answerArray[i].trim(); 
+				}
+				return answerArray;
+			}
+
+			function checkAnswer(userAnswer, correctAnswer) {
+				if(userAnswer.length !== correctAnswer.length) { return false }
+				var correctNum = 0;
+				for(var i = 0; i < userAnswer.length; i++) {
+					if (correctAnswer.indexOf(userAnswer[i]) > -1) {
+						correctNum++;
+					}
+				}
+				return (correctNum === correctAnswer.length) ? true : false;
+				
+			}
+
+			function slovo0(){
+				h1.innerHTML = answerW;
+				next.innerHTML = "Наступне слово";
+
+				input.style.display = "block";
+				p.style.display = "block";
+				h1.style.display = "block";
+				input.textContent = '';	
+				vd.style.display = "block";
+				img.style.display = 'none';
+				p1.style.display = "block";
+				p1.innerHTML;	
+				input.focus()
+			}
+
+		
+
+			function slovo10() {
+				
+			
+				vid = false;
+				expected;
+				var processedAnswer = processAnswer(input.value);
+				var answerIsCorrect = checkAnswer(processedAnswer, expected);
+
+				if (answerIsCorrect === true) {
+					vid = true;
+					p.innerHTML = 'Правильно!';
+					p.style.color = "blue";
+					ask.style.display = "none";
+					next.disabled = false;
+					
+				}
+				else {
+					p.innerHTML = "Непрвильно!"
+					p.style.color = "red"
+					ask.style.display = "block";
+
+					ask.addEventListener('click' , function () {
+						input.value = expected.join(', ');
+						ask.style.display = "none";
+						p.innerHTML = '';
+					});					
+					
+				}
+				
+
+			}
+			
+
+			
+			
+		</script>
+	</body>
+</html>
