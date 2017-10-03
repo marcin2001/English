@@ -6,20 +6,63 @@
 	<meta charset="utf-8">
 </head>
 	<style type="text/css">
-		body{
-			margin: none;
-			padding: none;
-			background-image: linear-gradient(to right, lightyellow, white, white, white, lightyellow)
+		body , html{
+			margin: 0px;
+			padding: 0px;
+			height: 100%;
+			width: 100%;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-image: url(foto/o.jpg);
+		}
+		hr{
+			margin: 30px 0px 30px 0px;
+			border: 0.5px solid gray;
+		}
+		.index{
+			max-width: 800px;
+			height: auto;
+			background: white;
+			padding-bottom: 15px;
+			box-shadow: 0px 0px 0px rgba(0,0,0,0.5);
+			margin-left: auto;
+			margin-right: auto;
+			padding-top: 1px;
+			border-right: 4px solid #009688;
+			border-left: 4px solid #009688;
+			border-bottom: 1px solid #009688;
+		}
+		s{
+			text-decoration: blink;
+			color: #009688;
+		}
+		.titl{
+			font-family: monospace;
+			font-weight: 500;
+			font-variant: normal;
+			letter-spacing: 1.5px;
+			word-spacing: normal;
+			text-align: center;
+			color: black;
+			padding: 8px;			
+			font-size: 25px;
+			margin-bottom: -12px; 
+		}
+		.osn{
+			margin: 0px;
+			height: auto;
+			max-width: 650px;
+			margin-left: auto;
+			margin-right: auto;
 		}
 		.content{
-			width: 601px;
-			height: 350px;
-			border: 1px solid gray;
-			border-bottom: one;
+			max-width: 601px;
+			min-height: 350px;
+
+			border: 1px solid black;
 			border-top: none;
 			margin-right: auto;
 			margin-left: auto;
-			margin-top: px;
 		}
 		.ask, .variants{
 			width: 300px;
@@ -28,13 +71,18 @@
 		}
 		
 		.variants{
-			border-left: 1px solid gray;
-
+			border-left: 1px solid black;
+			height: 350px;
 			text-align: center;
 		}
 		.slovo{
 			text-align: center;
 			margin-top: 65px;
+			font-family: monospace;
+			letter-spacing: 1.3px;
+			font-variant: normal;
+			font-stretch: normal;
+			font-weight: lighter;
 		}
 		.bolin{
 			text-align: center;
@@ -59,116 +107,203 @@
 			width: 250px;
 			height: 40px;
 			margin-bottom: 20px;
-			font-size: 16px;
+			font-size: medium;
 			outline: none;
-			border: 1px solid #ccc;
-			
+			border: 2px solid #009688;
+			letter-spacing: 1.1px;
+			word-wrap: break-word;
 		}
 		button:hover{
-			transform: scale(1.01);
-			border: none;
-			box-shadow: inset 0px 0px 1px rgba(0,0,0,1);
+			cursor: pointer;
 		}
+		
 		.contVar{
 			width: 250px;
 			height: 220px;	
 			margin-left: auto;
 			margin-right: auto;
-			margin-top: 60px
-		}
-		#g[disabled]{
-			cursor: not-allowed;
-		}
-		#g:hover:not([disabled]){
-			color: white;
+			margin-top: 60px;
 		}
 		#rel{
 			display: block;
 			margin-right: auto;
 			margin-left: auto;
-			background: #009688;
-			color: white;
+			color: black;
+			font-size: 18px;
+			font-family: monospace;
+			letter-spacing: 1.3px;
+			font-weight:400;	
+			line-height: 1;
+			background: #F5F5F5;
+			outline: none;
+			border: 1px solid 009688;
+		}
+		#rel:hover{
+
+			background: white
 		}
 		#demo1 ,#demo2, #rel{
 			display: none;
 		}
 		#demo1{
 			color: black;
-			margin-top: 75px;
+			margin-top: 95px;
+			text-align: center;
+			font-family: monospace;
+			letter-spacing: 1.3px;
+			font-variant: normal;
+			font-stretch: normal;
+			font-weight: lighter;
 		}
 		#demo2{
 			color: red;
+			text-align: center;
+
+			font-family: monospace;
+			letter-spacing: 1.3px;
+			font-variant: normal;
+			font-stretch: normal;
+			font-weight: lighter;
+		}
+
+		.rez{
+			display: flex;
+			justify-content: center;
+			margin: px;
+			margin-top: 30px;
+		}
+		#l2 , #l{
+			float: left;
+			font-size: 17px;
+			margin: 10px;
+			color: black;
+			font-family: monospace;
+			font-weight: 500;
+			text-align: center;
+			margin-right: auto;
+			margin-left: auto;	
+			display: block;
+
+		}
+		#l1{
+			color: red;
+			font-weight: 500;
+			font-family: monospace;
+		}
+		#l1l{
+			color: blue;
+			font-weight: 500;
+			font-family: monospace;
+		}
+		#d1,#d2{
+			width: 300px;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			background: #F5F5F5
+		}
+		#d1{
+			border: 1px solid black;
+			border-right: none;
+		}
+		#d2{
+			border: 1px solid black;
+			border-left:none;
+		}
+		.border-skala{
+			max-width: 454px;
+			border: 1px solid black;
+			height: auto;
+			background: ;
+			display: flex;
+			margin-right: auto;
+			margin-left: auto;
+			margin-top: 0px;
+			border-radius: 15px;
+		}
+		.skala{
+			width: 0px;
+			box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
+			border-radius: 15px;
+			height: 8px;
+			background:#00CD00;
+			display: flex;
+		}
+		
+		#but{
+			margin-right: auto;
+			margin-left: auto;
+			display: block;
+		}
+		#but[disabled] {
+			cursor: not-allowed;
+		}
+		#but:hover:not([disabled]){
+			background: white;
 		}
 		@media screen and (max-width: 650px){
+			.index{
+				height: auto;
+				padding-bottom: 50px;
+			}
 			.ask, .variants{
 				float: none;	
-				height: 350px;
-				
+				height: 350px;	
 				border: none;
 			}
+			.border-skala{
+				display: none
+			}
 			.ask{
-				height: 320px;
+				height: 380px;
+				display: block;
+				border-top: 0.1px solid white
 			}
 			.variants{
 				border-top: 1px solid black;
-				height: 370px;
+			
 				margin-top: -25px
 			}
 			.content{
 				height: 700px;
 				width: 301px;
 			}
-		}
-		.rez{
-			display: flex;
-			justify-content: center;
-			margin: px;
-			margin-top: 50px
-		}
-		#l2 , #l{
-			float: left;
-			font-size: 17px;
-			margin: 10px;
-			color: gray;
-			font-family: sans-serif, 'Times';
-			text-align: center;
-			margin-right: auto;
-			margin-left: auto;	
-			display: block;
-		}
-		#l2{
-			margin-left: 80px;
-		}
-		#l{
-			margin-left: 65px;
-		}
-		#l1{
-			color: red
-		}
-		#l1l{
-			color: blue
-		}
-		.d1,.d2{
-			width: 300px;
-			height: 100%;
-			text-align:center;
-		}
-		.d1{
+			.rez , .d1 , .d2{
+				float: none;
+				border-bottom: none;
+				border-left: none;
+				border-right: none;
+			}
 			
-			border: 1px solid #00CD00;
-			border-right: none;
+			.d2{
+				border-left: 1px solid black
+			}
+		}
+		@media screen and (max-width: 419px){
+			#l2{
+				letter-spacing: 1.3px;
+			}		
+			#l{
+				letter-spacing: 1.3px
+			}
 		
 		}
-		.d2{
-			border: 1px solid #00CD00;
-			border-left:none;
-		}
+
 	</style>
 <body>
+	<div id="test">	
+	<div class="index">
+	
+		<h1 class="titl" id="tit">Тест 1 <s>easy</s> </h1>
+		<hr>
+	<div class="osn">
+		<div class="border-skala" id="bordSkal">
+			<div class="skala" id="skala"></div>
+		</div>
 		
 		<div class="rez">
-			<div class="d1"><h1 id="l2">Кількість слів: <b id="l1l"></b>;</h1></div>
-			<div class="d2"><h1 id="l">Залишилось слів: <b id="l1"></b>;</h1></div>
+			<div id="d1"><h1 id="l2">Кількість слів: <b id="l1l"></b>;</h1></div>
+			<div id="d2"><h1 id="l">Залишилось слів: <b id="l1"></b>;</h1></div>
 		</div>
 		<div class="content">
 			
@@ -192,7 +327,11 @@
 				</div>
 			</div>
 		</div>
-		
+	</div>
+	<hr>
+		<button id="but" title='Для того що завершити, необхідно пройти половину тесту'>Завершити</button>
+	</div>
+</div>
 
 		<script type="text/javascript">
 			// varibls
@@ -214,6 +353,9 @@
 			var l2 = document.getElementById('l1l')
 			var h1 = document.getElementById('l');
 			var h2 = document.getElementById('l2');
+			var bordSkal = document.getElementById('bordSkal');
+			var skala = document.getElementById('skala');
+			var theEnd = document.getElementById('but');
 			
 
 			buttonsContainer.addEventListener('click', checkResponse)
@@ -257,8 +399,8 @@
 
 				var index = -1;
 			 	var askWord = [
+					['across'],
 			 		['accept'],
-			 		['young'],
 			 		['allow'],
 			 		['able'],
 			 		['above'],
@@ -406,12 +548,12 @@
 					['wait'],
 					['when'],
 					['who'],
-					['across']
+			 		['young']
 				];
 
 				var arrWord = [
+					['через', 'поперек'],
 					['приймати', 'визнавати'],
-					['молодий'],
 					['дозволяти'],
 					['здатний','спроможний'], 
 					['вище', 'вищезгаданий'],
@@ -559,10 +701,40 @@
 					['чекати'],
 					['коли'],
 					['хто'],
-					['через', 'поперек']
+					['молодий']
 				];
-				var wider = [0.8, 1.2, 1.6, 2.0, 2, 2.8, 3.2, 3.6, 4, 4.4, 4.8, 5.2, 5.6, 6, ];
+
+				var1.addEventListener('mouseover' , function(){
+					var1.style.background = 'white';
+				});
+				var1.addEventListener('mouseout' , function(){
+					var1.style.background = '#F5F5F5';
+					var1.style.color = 'black';
+				});
+				var2.addEventListener('mouseover' , function(){
+					var2.style.background = 'white';
+				});
+				var2.addEventListener('mouseout' , function(){
+					var2.style.background = '#F5F5F5';
+					var2.style.color = 'black';
+				});
+				var3.addEventListener('mouseover' , function(){
+					var3.style.background = 'white';
+				});
+				var3.addEventListener('mouseout' , function(){
+					var3.style.background = '#F5F5F5';
+					var3.style.color = 'black';
+				});
+				var4.addEventListener('mouseover' , function(){
+					var4.style.background = 'white';
+				});
+				var4.addEventListener('mouseout' , function(){
+					var4.style.background = '#F5F5F5';
+					var4.style.color = 'black';
+				});
+			
 				var t = askWord.length;
+				l2.textContent += t;
 				var ink;
 				var verr;
 				function relod(){
@@ -573,28 +745,21 @@
 				var er; 
 				boline();
 				
-				l2.textContent += t;
+				
 				function boline(){
-					
 
-					var1.innerHTML = null;
-					var2.innerHTML = null;
-					var3.innerHTML = null;
-					var4.innerHTML = null;
 					var1.style.color = 'black';
 					var2.style.color = 'black';
 					var3.style.color = 'black';
 					var4.style.color = 'black';
-					var1.style.backgroundImage = 'linear-gradient(to top , lightgray , white 100% , lightgray)';
-					var2.style.backgroundImage = 'linear-gradient(to top , lightgray , white 100% , lightgray)';
-					var3.style.backgroundImage = 'linear-gradient(to top , lightgray , white 100% , lightgray)';
-					var4.style.backgroundImage = 'linear-gradient(to top , lightgray , white 100% , lightgray)';
-					askWord.reverse();
-					arrWord.reverse();
-					
+					var1.style.background = '#F5F5F5';
+					var2.style.background = '#F5F5F5';
+					var3.style.background = '#F5F5F5';
+					var4.style.background = '#F5F5F5';
+									
 					index++;
 					currentWordIndex++;
-					o();
+					variantClickFunc();
 					var randansw = Math.floor(Math.random() * sl.length );
 					var len = sl[randansw];
 					er = len;
@@ -612,7 +777,10 @@
 						var3.style.display = "none";
 						var4.style.display = "none";
 						slovo.style.display = 'none';  
-						
+						document.getElementById('tit').textContent = 'Результат';
+						document.getElementById('d1').style.borderTop = 'none';
+						document.getElementById('d2').style.borderTop = 'none';
+
 						img.style.width = '100%';
 						img.style.height = '100%';
 						im.style.width = '80%';
@@ -623,23 +791,73 @@
 						rel.style.display = 'block';
 						demo1.textContent += '' + ob;
 						demo2.textContent += '' + err;
-						
+						bordSkal.style.display = 'none';
 
-						if(ob !== 150){
+						if(ob <= 75){
 							im.src = 'foto/sym.jpg';
 						}
-						if(ob == 150){
+						if(ob >= 75){
 							im.src = 'foto/rad.jpg'
 							im.style.height = 'auto';
 							im.style.marginTop = '80px';
 						}
 						h1.style.display = 'none'
 						h2.style.display = 'none'
+						but.style.display = 'none'
+					}
+					but.disabled = 'disabled'
+					if(index >= arrWord.length / 2){
+						but.disabled = false;
+						but.title = ''
 					}
 					ink = i -= 1;
-					l1.textContent = ink; 							
+					l1.textContent = ink; 		
+					skal();
+					severalIndex();
 				}
-				
+				var severalWord = 0;
+				function closTest(){
+					var worderr = severalWord - sevWordErr;
+					bolin.style.display = 'none';
+					var1.style.display = "none";
+					var2.style.display = "none";
+					var3.style.display = "none";
+					var4.style.display = "none";
+					slovo.style.display = 'none';  
+					document.getElementById('tit').textContent = 'Результат';
+					document.getElementById('d1').style.borderTop = 'none';
+					document.getElementById('d2').style.borderTop = 'none';
+					but.style.display = 'none'
+
+					img.style.width = '100%';
+					img.style.height = '100%';
+					im.style.width = '80%';
+					im.style.height = '70%';
+					im.style.marginTop = '50px'
+					demo1.style.display = 'block';
+					demo2.style.display = 'block';
+					rel.style.display = 'block';
+					demo1.textContent += '' + severalWord - worderr;
+					demo2.textContent += '' + worderr;
+					bordSkal.style.display = 'none';
+					if(worderr >= severalWord / 2){
+						im.src = 'foto/sym.jpg';
+					}
+					if(worderr <= severalWord / 2){
+						im.src = 'foto/rad.jpg'
+						im.style.height = 'auto';
+						im.style.marginTop = '80px';
+					}
+					h1.style.display = 'none'
+					h2.style.display = 'none'
+					
+
+				}
+				function severalIndex(){
+					severalWord++;
+				}
+				theEnd.addEventListener('click' , closTest)
+			
 				var i = t;
 				var ink;
 
@@ -648,11 +866,12 @@
 					er.style.color = "blue";
 					bolin.textContent = 'Неправильно!';
 					bolin.style.color = 'red';	
-					setTimeout(boline , 2000);
+					setTimeout(boline , 2000);	
 				}
 
 				var err;
 				var ob;
+				var sevWordErr = 0;
 
 				function w(){
 					bolin.textContent = 'Правильно';
@@ -661,9 +880,17 @@
 					er.style.background = '#009688';
 					err = a -= 1;
 					ob = 150 - err;	
+					sevWordErr++;
 				}
+				var r = 0;
+				function skal(){
+					r++;
+					var t = r += 2;
+					skala.style.width = t + 'px';
+				}
+				skal()
 
-				function o(){
+				function variantClickFunc(){
 					var arrayForRandom = arrWord.slice(0);
 					arrayForRandom.splice(index, 1)
 					var rand1 = Math.floor(Math.random() * arrayForRandom.length);
@@ -675,7 +902,6 @@
 					var fun3 = arrayForRandom[rand3];
 					var fun4 = arrayForRandom[rand4];
 					
-					
 					var1.textContent = fun1;
 					var1.addEventListener('click' , check)
 					var2.textContent = fun2;
@@ -684,10 +910,10 @@
 					var3.addEventListener('click' , check)
 					var4.textContent = fun4;
 					var4.addEventListener('click' , check)
-
 				}
-				
-				// l.textContent = arrWord.length;
+							
+				 // l.textContent = arrWord.length;
 		</script>
+
 </body>
 </html>
